@@ -1,22 +1,46 @@
-import { IFixtureProvider } from "../providers/IFixtureProvider";
+import { IFixtureProvider } from '@src/providers/IFixtureProvider'
+import { join } from 'path'
 
 export class AbbreviationHelper{
 
-    constructor(private iFixtureProvider: IFixtureProvider){
+    constructor(private iFixtureProvider: IFixtureProvider){}
 
+    getLongName(state: string, country: string = 'us') : string {
+        let foundStates = this.iFixtureProvider.getContent(
+            join(
+                __dirname,
+                '..',
+                '..',
+                'fixtures',
+                country.toLocaleLowerCase(),
+                'states.json'
+            )
+        )
+        
+        return foundStates[state.toUpperCase()] || ""
     }
 
-    execute(state: string, country: string){
-        let foundStates = this.iFixtureProvider.getContent(`./../../fixtures/${country.toLocaleLowerCase()}/states.json`)
-        if(state.length > 2){
-            for (let index = 0; index < foundStates.length; index++) {
-                let element = foundStates[index]
-                let key = Object.keys(element)[0]
-                if(element[key].toUpperCase() == state.toUpperCase()){
-                    return key.toUpperCase()
-                }
+    getShortName(state: string, country: string = 'us') : string {
+        let foundStates = this.iFixtureProvider.getContent(
+            join(
+                __dirname,
+                '..',
+                '..',
+                'fixtures',
+                country.toLocaleLowerCase(),
+                'states.json'
+            )
+        )
+
+        let shortCode = ""
+        
+        for(let key of foundStates.keys()){
+            if(foundStates[key].toLocaleLowerCase() == state.toLocaleLowerCase()){
+                shortCode = key
+                break
             }
         }
-        return state.toUpperCase()
+
+        return shortCode
     }
 }

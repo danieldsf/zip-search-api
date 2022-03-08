@@ -1,4 +1,4 @@
-import { app } from './app';
-const port = 3333
+import { app } from '@src/app';
+import { PORT } from '@src/helpers/settings';
 
-app.listen(port, () => console.log(`App running at: localhost:${port}`))
+app.listen(PORT, () => console.log(`App running at: localhost:${PORT}`))

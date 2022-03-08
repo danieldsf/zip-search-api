@@ -1,5 +1,5 @@
-import { Location } from '../entities/Location';
-import { IZipData } from '../providers/IZipSearchProvider';
+import { Location } from '@src/entities/Location'
+import { IZipData } from '@src/providers/IZipSearchProvider'
 
 export interface ILocationsRepository{
     findByZipAndCountry(zip: string, country: string): Promise<Location>

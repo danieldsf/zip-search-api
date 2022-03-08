@@ -1,8 +1,8 @@
-import { uuid } from 'uuidv4'
+import { v4 } from 'uuid'
 
 export class Location{
 
-    public readonly id: string;
+    public readonly id?: string;
     public zip: string;
     public country: string;
     public city?: string;
@@ -10,9 +10,10 @@ export class Location{
     public street?: string;
     public province_code?: string;
     public country_code?: string;
+    public county?: string;
 
-    constructor(props: Omit<Location, 'id'>, id?: string){
+    constructor(props: Location){
         Object.assign(this, props)
-        this.id = id || uuid()
+        this.id = props?.id || v4()
     }
 }

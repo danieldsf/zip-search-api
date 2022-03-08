@@ -1,8 +1,9 @@
 import axios, { AxiosInstance } from 'axios'
-import { IHttpClientProvider } from "../providers/IHttpClientProvider";
+import { IHttpClientProvider } from '@src/providers/IHttpClientProvider'
 
 export class AxiosHttpClientProvider implements IHttpClientProvider{
-    public instance: AxiosInstance
+
+    private instance: AxiosInstance
 
     constructor(){
         this.instance = axios.create({
@@ -15,7 +16,7 @@ export class AxiosHttpClientProvider implements IHttpClientProvider{
     }
 
     async post(url: string, body?: any, config?: any): Promise<any> {
-        return await axios.post(url, body, config).then(data => data.data)
+        return await this.instance.post(url, body, config).then(data => data.data)
     }
 
 }

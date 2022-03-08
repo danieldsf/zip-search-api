@@ -5,8 +5,7 @@
   "license": "MIT",
   "scripts": {
     "start": "tsnd -r dotenv/config -r tsconfig-paths/register --transpile-only --respawn --ignore-watch node_modules src/server.ts",
-    "start-prod": "tsnd -r tsconfig-paths/register --transpile-only --respawn --ignore-watch node_modules src/server.ts",
-    "build": "tsc ."
+    "start-prod": "tsnd -r tsconfig-paths/register --transpile-only --respawn --ignore-watch node_modules src/server.ts"
   },
   "dependencies": {
     "@supabase/supabase-js": "^1.31.1",

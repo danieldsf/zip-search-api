@@ -4,8 +4,8 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "start": "tsnd -r dotenv/config -r tsconfig-paths/register --transpile-only --respawn --ignore-watch node_modules src/server.ts",
-    "start-prod": "tsnd -r tsconfig-paths/register --transpile-only --respawn --ignore-watch node_modules src/server.ts"
+    "start": "npx tsnd -r dotenv/config -r tsconfig-paths/register --transpile-only --respawn --ignore-watch node_modules src/server.ts",
+    "start-prod": "npx tsnd -r tsconfig-paths/register --transpile-only --respawn --ignore-watch node_modules src/server.ts"
   },
   "dependencies": {
     "@supabase/supabase-js": "^1.31.1",

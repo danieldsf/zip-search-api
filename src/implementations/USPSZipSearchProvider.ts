@@ -1,4 +1,4 @@
-import qs from 'qs'
+import { stringify } from 'qs'
 import { IHttpClientProvider } from '@src/providers/IHttpClientProvider'
 import { IZipData, IZipInputQuery, IZipSearchProvider } from '@src/providers/IZipSearchProvider'
 import { IFixtureProvider } from '@src/providers/IFixtureProvider'
@@ -36,7 +36,7 @@ export class USPSZipSearchProvider implements IZipSearchProvider{
         const abbreviationHelper = new AbbreviationHelper(this.iFixtureProvider) 
         
         try {
-            let responseFromClient: any = await this.iHttpClientProvider.post(uspsURL, qs.stringify(requestBody), config)
+            let responseFromClient: any = await this.iHttpClientProvider.post(uspsURL, stringify(requestBody), config)
             logMessage(responseFromClient)
             if(!(responseFromClient.resultStatus == 'SUCCESS')){
                 throw new Error("Location not found")
